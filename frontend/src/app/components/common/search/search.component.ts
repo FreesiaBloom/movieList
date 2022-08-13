@@ -21,6 +21,12 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  public clearSearchInput(): void {
+    this.searchTerm = '';
+    this.search(this.searchTerm)
+  }
+
   public search(value: any): void {
     this.searchTerm = value;
     if (this.searchTerm) {
@@ -29,10 +35,4 @@ export class SearchComponent implements OnInit {
       this._router.navigateByUrl('/');
     }
   }
-
-  public clearSearchInput(): void {
-    this.searchTerm = '';
-    this.search(this.searchTerm);
-  }
-
 }
