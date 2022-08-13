@@ -3,6 +3,6 @@
     <button mat-stroked-button color="primary" (click)="filter(tag)">{{tag}}</button>
   </li>
   <li>
-    <button mat-stroked-button color="primary" [disabled]="!tag" (click)="filter('')">Clear filter</button>
+    <button mat-stroked-button color="primary" [disabled]="!tag" (click)="filter('')"><mat-icon>close</mat-icon></button>
   </li>
 </ul>
