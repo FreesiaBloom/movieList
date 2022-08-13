@@ -18,11 +18,12 @@ export class MovieListComponent implements OnInit {
     activatedRoute: ActivatedRoute) {
     activatedRoute.params.subscribe((params) => {
       if (params['searchTerm']) {
-        this.getMovieListBySearchTerm(params['searchTerm']);
+        return this.getMovieListBySearchTerm(params['searchTerm']);
       }
-      else {
-        this.getMovieListBySearchTerm('');
+      if (params['tag']) {
+        return this.filterMovie(params['tag']);
       }
+      return this.getMovieListBySearchTerm('');
     });
   }
 

@@ -1,8 +1,8 @@
 <ul class="tag-list">
+  <li>
+    <button mat-stroked-button color="primary" (click)="filter('')">All</button>
+  </li>
   <li *ngFor="let tag of tagList" class="tag-list">
     <button mat-stroked-button color="primary" (click)="filter(tag)">{{tag}}</button>
-  </li>
-  <li>
-    <button mat-stroked-button color="primary" [disabled]="!tag" (click)="filter('')"><mat-icon>close</mat-icon></button>
   </li>
 </ul>

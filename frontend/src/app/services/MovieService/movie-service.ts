@@ -32,8 +32,7 @@ export class MovieService {
       .pipe(
         map((data: IMovie[]) => {
           return data.filter((movie: IMovie) => {
-            return movie.genres?.find((item) => {
-              console.log(typeof item);
+            return movie.genres?.find((item: string) => {
               return item === genre;
             });
           });

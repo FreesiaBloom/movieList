@@ -13,6 +13,10 @@ const routes: Routes = [
     component: MovieListComponent
   },
   {
+    path: 'tag/:tag',
+    component: MovieListComponent
+  },
+  {
     path: 'movie/:movieId',
     component: MovieDetailsComponent
   }
