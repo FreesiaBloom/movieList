@@ -14,6 +14,7 @@ export class MovieListComponent implements OnInit {
 
   constructor(private _movieService: MovieService) {
     this.getMovieList();
+    this.getMovieListBySearchTerm('Bad');
   }
 
   ngOnInit(): void {
@@ -21,10 +22,15 @@ export class MovieListComponent implements OnInit {
   }
 
   private getMovieList(): void {
-    this._movieService.getMovieList().subscribe((response) => {
+    this._movieService.getMovieList().subscribe((response: IMovie[]) => {
       this.movieList = response;
     });
-
   }
 
+  private getMovieListBySearchTerm(searchTerm: string): void {
+    this._movieService.getMovieListBySearchTerm(searchTerm)
+      .subscribe((response: IMovie[]) => {
+        this.movieList = response;
+      });
+  }
 }
