@@ -6,6 +6,10 @@ const routes: Routes = [
   {
     path: '',
     component: MovieListComponent
+  },
+  {
+    path: 'search/:searchTerm',
+    component: MovieListComponent
   }
 ];
 

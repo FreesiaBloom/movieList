@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { MovieService } from 'src/app/services/movie-service';
 import { IMovie } from 'src/app/shared/interfaces/IMovie';
 
@@ -12,9 +13,15 @@ export class MovieListComponent implements OnInit {
   public movieList: IMovie[] = [];
   data: any;
 
-  constructor(private _movieService: MovieService) {
-    this.getMovieList();
-    this.getMovieListBySearchTerm('Bad');
+  constructor(private _movieService: MovieService, activatedRoute: ActivatedRoute) {
+    activatedRoute.params.subscribe((params) => {
+      if (params['searchTerm']) {
+        this.getMovieListBySearchTerm(params['searchTerm']);
+      }
+      else {
+        this.getMovieList();
+      }
+    })
   }
 
   ngOnInit(): void {
