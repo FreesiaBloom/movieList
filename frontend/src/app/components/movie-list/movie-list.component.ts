@@ -17,6 +17,7 @@ export class MovieListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.movieList);
   }
 
   private getMovieList(): void {
