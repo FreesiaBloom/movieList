@@ -21,8 +21,19 @@ export class MovieService {
       .pipe(
         map((data: IMovie[]) => {
           return data.filter((movie: IMovie) => {
-            return movie.name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())
-          });;
+            return movie.name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase());
+          });
+        })
+      );
+  }
+
+  getMovieById(id: number): Observable<IMovie[]> {
+    return this.httpClient.get<IMovie[]>("/assets/movies-data.json")
+      .pipe(
+        map((data: IMovie[]) => {
+          return data.filter((movie: IMovie) => {
+            return movie.id === id;
+          });
         })
       );
   }
