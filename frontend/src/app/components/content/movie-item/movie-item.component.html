@@ -1,4 +1,4 @@
-<div class="item">
+<div class="item" *ngIf="movie">
   <a routerLink="/cartmovie/{{movie.id}}">
       <img [src]="'/assets/movie-covers/' + movie.img" [alt]="movie.name" />
       <div class="footer">
