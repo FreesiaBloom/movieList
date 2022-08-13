@@ -27,12 +27,12 @@ export class MovieService {
       );
   }
 
-  getMovieById(id: number): Observable<IMovie[]> {
+  getMovieById(movieId: number): Observable<IMovie | undefined> {
     return this.httpClient.get<IMovie[]>("/assets/movies-data.json")
       .pipe(
         map((data: IMovie[]) => {
-          return data.filter((movie: IMovie) => {
-            return movie.id === id;
+          return data.find((movie: IMovie) => {
+            return movie.id === movieId;
           });
         })
       );

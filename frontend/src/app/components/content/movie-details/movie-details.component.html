@@ -1,1 +1,42 @@
-<p>movie-details works!</p>
+<div *ngIf="movie" class="container">
+
+  <div class="breadcrumbs my-3">
+    <a>
+      Dashboard > {{movie.name}}
+    </a>
+  </div>
+  <div class="movie-details row">
+    <div class="col-lg-3">
+      <img [src]="'/assets/movie-covers/' + movie.img" [alt]="movie.name"/>
+
+    </div>
+    <div class="movie-details-content col-lg-9">
+      <div>
+        <div class="header">
+          <h1 class="name">
+            {{movie.name}}
+          </h1>
+        </div>
+
+        <div class="description">
+          <span>{{movie.description}}</span>
+        </div>
+
+        <div class="ratings">
+          <span>{{movie.rate}} / 10</span>
+        </div>
+
+        <div class="length">
+          <span>{{movie.length}}</span>
+        </div>
+
+        <div class="genres">
+          <span *ngFor="let genre of movie.genres">
+            {{genre}}
+            <span class="px-2">&#183;</span>
+          </span>
+        </div>
+      </div>
+  </div>
+  </div>
+</div>

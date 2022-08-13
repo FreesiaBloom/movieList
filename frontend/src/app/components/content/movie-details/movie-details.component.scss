@@ -1,0 +1,14 @@
+.movie-details {
+
+  img {
+    border-radius: .3rem;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  &-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
