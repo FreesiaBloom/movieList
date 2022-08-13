@@ -18,6 +18,7 @@ import { SearchComponent } from './components/common/search/search.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import { MovieDetailsComponent } from './components/content/movie-details/movie-details.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { MatIconModule } from '@angular/material/icon';
     MovieListComponent,
     HeaderComponent,
     MovieItemComponent,
-    SearchComponent
+    SearchComponent,
+    MovieDetailsComponent
   ],
   imports: [
     BrowserModule,
