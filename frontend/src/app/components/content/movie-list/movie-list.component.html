@@ -1,4 +1,9 @@
 <div class="container">
+  <div class="breadcrumbs my-3">
+    <a>
+      Dashboard
+    </a>
+  </div>
   <ul class="list row">
     <li *ngFor="let movie of movieList"  class="list-item col-lg-3">
       <app-movie-item [movie]="movie"></app-movie-item>

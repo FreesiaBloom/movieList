@@ -1,8 +1,12 @@
+@import 'src/assets/styles/variables.scss';
+
 a {
-  margin: .5rem;
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  padding: 0.3rem;
+  border-radius: 0.3rem;
+  border: 1px solid $white;
 
   .footer {
     padding: 0.3rem .5rem;
@@ -20,4 +24,12 @@ a {
       margin-bottom: 0;
     }
   }
+}
+
+.item{
+  border: 1px solid $white;
+}
+
+.item:hover {
+  border: 1px solid $border-grey;
 }
