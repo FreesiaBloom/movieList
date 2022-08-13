@@ -11,10 +11,6 @@ export class MovieService {
 
   constructor(private httpClient: HttpClient) { }
 
-  // getMovieList(): Observable<IMovie[]> {
-  //   return this.httpClient.get<IMovie[]>('./assets/movies-data.json');
-  // }
-
   getMovieList(): Observable<IMovie[]> {
     return this.httpClient.get<IMovie[]>("/assets/movies-data.json");
   }
