@@ -2,9 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators'
+import { IMovie } from 'src/app/shared/interfaces/IMovie';
 
-import { IMovie } from '../shared/interfaces/IMovie';
-import { GenreType } from '../shared/enums/GenreType';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +33,7 @@ export class MovieService {
         map((data: IMovie[]) => {
           return data.filter((movie: IMovie) => {
             return movie.genres?.find((item) => {
+              console.log(typeof item);
               return item === genre;
             });
           });
