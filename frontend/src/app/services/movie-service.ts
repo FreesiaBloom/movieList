@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators'
 
 import { IMovie } from '../shared/interfaces/IMovie';
+import { GenreType } from '../shared/enums/GenreType';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,17 @@ export class MovieService {
         map((data: IMovie[]) => {
           return data.filter((movie: IMovie) => {
             return movie.name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase());
+          });
+        })
+      );
+  }
+
+  getMovieListByGenres(genre: GenreType): Observable<IMovie[]> {
+    return this.httpClient.get<IMovie[]>("/assets/movies-data.json")
+      .pipe(
+        map((data: IMovie[]) => {
+          return data.filter((movie: IMovie) => {
+            return movie.genres?.includes(genre);
           });
         })
       );
