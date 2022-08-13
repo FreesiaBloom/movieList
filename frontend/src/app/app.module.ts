@@ -8,7 +8,7 @@ import { StoreModule } from '@ngrx/store';
 import { HttpClientModule } from '@angular/common/http';
 
 // components
-import { MovieListComponent } from './components/movie-list/movie-list.component';
+import { MovieListComponent } from './components/content/movie-list/movie-list.component';
 import { HeaderComponent } from './components/common/header/header.component';
 
 // Angular Material

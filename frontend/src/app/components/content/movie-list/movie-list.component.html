@@ -8,15 +8,18 @@
             {{item.name}}
           </h3>
           <div class="list-item-footer-content">
-            <span>
-              {{item.rate}} / 10
-            </span>
-            <span>
-              {{item.length}}
-            </span>
+            <div>
+              <span class="pe-2">
+                {{item.rate}} / 10
+              </span>
+              <span>
+                {{item.length}}
+              </span>
+            </div>
             <ul class="list-item-footer-genres">
               <li *ngFor="let genre of item.genres">
                 <span>{{ genre }}</span>
+                <span class="px-2">&#183;</span>
               </li>
             </ul>
           </div>
