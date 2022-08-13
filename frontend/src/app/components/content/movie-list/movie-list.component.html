@@ -1,10 +1,6 @@
 <div class="container" *ngIf="movieList">
   <app-search (searchEvent)="searchMovie($event)"></app-search>
-  <div class="breadcrumbs my-3">
-    <a>
-      Dashboard
-    </a>
-  </div>
+  <app-tags></app-tags>
   <ul class="list row">
     <li *ngFor="let movie of movieList"  class="list-item col-lg-3">
       <app-movie-item [movie]="movie"></app-movie-item>
