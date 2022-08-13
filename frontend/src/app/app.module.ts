@@ -5,6 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
+import { HttpClientModule } from '@angular/common/http';
+
+// components
 import { MovieListComponent } from './components/movie-list/movie-list.component';
 import { HeaderComponent } from './components/common/header/header.component';
 
@@ -21,6 +24,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     StoreModule.forRoot({}, {}),
     // Angular Material
     MatToolbarModule
