@@ -1,0 +1,23 @@
+a {
+  margin: .5rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  .footer {
+    padding: 0.3rem .5rem;
+
+
+    &-content {
+      display: grid;
+    }
+
+    &-genres{
+      display: flex;
+    }
+
+    &-title {
+      margin-bottom: 0;
+    }
+  }
+}

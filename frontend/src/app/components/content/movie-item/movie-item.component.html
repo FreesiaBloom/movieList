@@ -1,0 +1,24 @@
+<a routerLink="/cartmovie/{{movie.id}}">
+  <img [src]="'/assets/movie-covers/' + movie.img" [alt]="movie.name" />
+  <div class="footer">
+    <h3 class="footer-title">
+      {{movie.name}}
+    </h3>
+    <div class="footer-content">
+      <div>
+        <span class="pe-2">
+          {{movie.rate}} / 10
+        </span>
+        <span>
+          {{movie.length}}
+        </span>
+      </div>
+      <ul class="footer-genres">
+        <li *ngFor="let genre of movie.genres">
+          <span>{{ genre }}</span>
+          <span class="px-2">&#183;</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</a>

@@ -13,12 +13,14 @@ import { HeaderComponent } from './components/common/header/header.component';
 
 // Angular Material
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { MovieItemComponent } from './components/content/movie-item/movie-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MovieListComponent,
-    HeaderComponent
+    HeaderComponent,
+    MovieItemComponent
   ],
   imports: [
     BrowserModule,

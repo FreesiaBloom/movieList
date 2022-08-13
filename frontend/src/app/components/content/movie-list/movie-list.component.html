@@ -1,30 +1,7 @@
 <div class="container">
   <ul class="list row">
-    <li *ngFor="let item of movieList"  class="list-item col-lg-3">
-      <a routerLink="/cartItem/{{item.id}}">
-        <img [src]="'/assets/movie-covers/' + item.img" [alt]="item.name" />
-        <div class="list-item-footer">
-          <h3 class="list-item-footer-title">
-            {{item.name}}
-          </h3>
-          <div class="list-item-footer-content">
-            <div>
-              <span class="pe-2">
-                {{item.rate}} / 10
-              </span>
-              <span>
-                {{item.length}}
-              </span>
-            </div>
-            <ul class="list-item-footer-genres">
-              <li *ngFor="let genre of item.genres">
-                <span>{{ genre }}</span>
-                <span class="px-2">&#183;</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </a>
+    <li *ngFor="let movie of movieList"  class="list-item col-lg-3">
+      <app-movie-item [movie]="movie"></app-movie-item>
     </li>
   </ul>
 </div>
