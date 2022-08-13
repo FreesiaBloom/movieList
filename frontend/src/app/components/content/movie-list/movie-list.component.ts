@@ -11,26 +11,13 @@ import { IMovie } from 'src/app/shared/interfaces/IMovie';
 export class MovieListComponent implements OnInit {
 
   public movieList: IMovie[] = [];
-  data: any;
+  public searchTerm: string = '';
 
-  constructor(private _movieService: MovieService, activatedRoute: ActivatedRoute) {
-    activatedRoute.params.subscribe((params) => {
-      if (params['searchTerm']) {
-        this.getMovieListBySearchTerm(params['searchTerm']);
-      }
-      else {
-        this.getMovieList();
-      }
-    });
+  constructor(private _movieService: MovieService) {
+    this.getMovieListBySearchTerm('');
   }
 
   ngOnInit(): void {
-  }
-
-  private getMovieList(): void {
-    this._movieService.getMovieList().subscribe((response: IMovie[]) => {
-      this.movieList = response;
-    });
   }
 
   private getMovieListBySearchTerm(searchTerm: string): void {
@@ -38,5 +25,10 @@ export class MovieListComponent implements OnInit {
       .subscribe((response: IMovie[]) => {
         this.movieList = response;
       });
+  }
+
+  public searchMovie(term: string) {
+    this.searchTerm = term;
+    this.getMovieListBySearchTerm(this.searchTerm);
   }
 }

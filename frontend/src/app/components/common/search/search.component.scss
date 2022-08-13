@@ -1,10 +1,11 @@
 .search-form {
+  display: block;
+  font-size: 16px;
   button {
     border: none;
   }
 
-
-.mat-form-field {
-  display: inline;
-}
+  // .mat-form-field {
+  //   display: inline;
+  // }
 }

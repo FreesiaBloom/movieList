@@ -13,12 +13,13 @@ import { MovieListComponent } from './components/content/movie-list/movie-list.c
 import { HeaderComponent } from './components/common/header/header.component';
 import { MovieItemComponent } from './components/content/movie-item/movie-item.component';
 import { SearchComponent } from './components/common/search/search.component';
+import { MovieDetailsComponent } from './components/content/movie-details/movie-details.component';
 
 // Angular Material
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
-import { MovieDetailsComponent } from './components/content/movie-details/movie-details.component';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { MovieDetailsComponent } from './components/content/movie-details/movie-
     // Angular Material
     MatToolbarModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

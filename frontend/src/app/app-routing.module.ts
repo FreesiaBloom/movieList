@@ -9,11 +9,7 @@ const routes: Routes = [
     component: MovieListComponent
   },
   {
-    path: 'search/:searchTerm',
-    component: MovieListComponent
-  },
-  {
-    path: 'movie/:id',
+    path: 'movie/:movieId',
     component: MovieDetailsComponent
   }
 ];

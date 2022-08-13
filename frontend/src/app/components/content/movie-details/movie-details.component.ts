@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ActivationEnd } from '@angular/router';
 import { MovieService } from 'src/app/services/movie-service';
 import { IMovie } from 'src/app/shared/interfaces/IMovie';
 
@@ -14,8 +14,9 @@ export class MovieDetailsComponent implements OnInit {
 
   constructor(private _movieService: MovieService, activatedRoute: ActivatedRoute) {
     activatedRoute.params.subscribe((params) => {
-      if (params['id']) {
-        this.getMovie(Number(params['id']));
+      console.log(params);
+      if (params['movieId']) {
+        this.getMovie(Number(params['movieId']));
       }
     });
   }

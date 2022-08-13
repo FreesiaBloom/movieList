@@ -1,4 +1,5 @@
 <div class="container" *ngIf="movieList">
+  <app-search (searchEvent)="searchMovie($event)"></app-search>
   <div class="breadcrumbs my-3">
     <a>
       Dashboard

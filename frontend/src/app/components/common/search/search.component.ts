@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -6,21 +6,12 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss']
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent {
 
   public searchTerm: string = '';
+  @Output() searchEvent = new EventEmitter<string>();
 
-  constructor(activatedRoute: ActivatedRoute,
-    private _router: Router) {
-      activatedRoute.params.subscribe((params) => {
-        if (params['searchTerm']) {
-          this.searchTerm = params['searchTerm'];
-        }
-      })
-    }
-
-  ngOnInit(): void {
-  }
+  constructor() { }
 
   public clearSearchInput(): void {
     this.searchTerm = '';
@@ -29,10 +20,6 @@ export class SearchComponent implements OnInit {
 
   public search(value: any): void {
     this.searchTerm = value;
-    if (this.searchTerm) {
-      this._router.navigateByUrl('/search/' + this.searchTerm);
-    } else {
-      this._router.navigateByUrl('/');
-    }
+    this.searchEvent.emit(this.searchTerm);
   }
 }
