@@ -28,12 +28,14 @@ export class MovieService {
       );
   }
 
-  getMovieListByGenres(genre: GenreType): Observable<IMovie[]> {
+  getMovieListByGenres(genre: string): Observable<IMovie[]> {
     return this.httpClient.get<IMovie[]>("/assets/movies-data.json")
       .pipe(
         map((data: IMovie[]) => {
           return data.filter((movie: IMovie) => {
-            return movie.genres?.includes(genre);
+            return movie.genres?.find((item) => {
+              return item === genre;
+            });
           });
         })
       );

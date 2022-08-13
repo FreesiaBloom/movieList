@@ -12,16 +12,13 @@ export class MovieListComponent implements OnInit {
 
   public movieList: IMovie[] = [];
   public searchTerm: string = '';
-  public genreTypes = Object.keys(GenreType);
 
   constructor(private _movieService: MovieService) {
     this.getMovieListBySearchTerm('');
-    this.getMovieListByGenres(GenreType.thriller);
   }
 
   ngOnInit(): void {
   }
-
 
   private getMovieListBySearchTerm(searchTerm: string): void {
     this._movieService.getMovieListBySearchTerm(searchTerm)
@@ -30,7 +27,7 @@ export class MovieListComponent implements OnInit {
       });
   }
 
-  private getMovieListByGenres(genre: GenreType): void {
+  private getMovieListByGenres(genre: string): void {
     this._movieService.getMovieListByGenres(genre)
       .subscribe((response: IMovie[]) => {
         this.movieList = response;
@@ -40,5 +37,10 @@ export class MovieListComponent implements OnInit {
   public searchMovie(term: string) {
     this.searchTerm = term;
     this.getMovieListBySearchTerm(this.searchTerm);
+  }
+
+  public filterMovie(tag: string) {
+    if (tag) return this.getMovieListByGenres(tag);
+    return this.getMovieListBySearchTerm('');
   }
 }

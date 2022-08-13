@@ -14,12 +14,14 @@ import { HeaderComponent } from './components/common/header/header.component';
 import { MovieItemComponent } from './components/content/movie-item/movie-item.component';
 import { SearchComponent } from './components/common/search/search.component';
 import { MovieDetailsComponent } from './components/content/movie-details/movie-details.component';
+import { TagListComponent } from './components/common/tag-list/tag-list.component';
 
 // Angular Material
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     HeaderComponent,
     MovieItemComponent,
     SearchComponent,
-    MovieDetailsComponent
+    MovieDetailsComponent,
+    TagListComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatToolbarModule,
     MatInputModule,
     MatIconModule,
-    MatGridListModule
+    MatGridListModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
