@@ -16,6 +16,10 @@ import { SearchComponent } from './components/common/search/search.component';
 import { MovieDetailsComponent } from './components/content/movie-details/movie-details.component';
 import { TagListComponent } from './components/common/tag-list/tag-list.component';
 
+// services
+
+import { CurrentParamsService } from './services/currentParamsService/current-params.service';
+
 // Angular Material
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
@@ -47,7 +51,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatGridListModule,
     MatButtonModule
   ],
-  providers: [],
+  providers: [CurrentParamsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
