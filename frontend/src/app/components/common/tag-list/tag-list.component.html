@@ -1,8 +1,10 @@
 <ul class="tag-list">
   <li>
-    <button mat-stroked-button color="primary" (click)="filter('')">All</button>
+    <button *ngIf="activeTag" mat-stroked-button color="primary" (click)="filter('')">All</button>
+    <button *ngIf="!activeTag" mat-flat-button color="primary" (click)="filter('')">All</button>
   </li>
   <li *ngFor="let tag of tagList" class="tag-list">
-    <button mat-stroked-button color="primary" (click)="filter(tag)">{{tag}}</button>
+    <button *ngIf="tag !== activeTag" mat-stroked-button color="primary" (click)="filter(tag)">{{tag}}</button>
+    <button *ngIf="tag === activeTag" mat-flat-button color="primary" (click)="filter(tag)">{{tag}}</button>
   </li>
 </ul>

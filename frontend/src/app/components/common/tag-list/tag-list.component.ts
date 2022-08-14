@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { GenreType } from 'src/app/shared/enums/GenreType';
 
 @Component({
@@ -13,7 +13,16 @@ export class TagListComponent {
 
   public tagList = Object.keys(GenreType);
 
-  constructor(private _router: Router) { }
+  public activeTag: string = '';
+
+  constructor(private _router: Router,
+    activatedRoute: ActivatedRoute) {
+    activatedRoute.params.subscribe((params) => {
+      if (params['tag']) {
+        this.activeTag = params['tag'];
+      }
+    });
+  }
 
   public filter(tag: string): void {
     if (tag) {
