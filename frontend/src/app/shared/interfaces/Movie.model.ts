@@ -1,6 +1,6 @@
 import { GenreType } from "../enums/GenreType";
 
-export interface IMovie {
+export interface Movie {
   id: number;
   key: string;
   name: string;
