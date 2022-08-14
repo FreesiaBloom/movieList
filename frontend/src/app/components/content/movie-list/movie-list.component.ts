@@ -1,52 +1,40 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { MovieService } from 'src/app/services/MovieService/movie-service';
-import { IMovie } from 'src/app/shared/interfaces/IMovie';
+import { Movie } from 'src/app/shared/interfaces/Movie.model';
+import { AppState } from 'src/app/store/app.state';
+
+import { loadMovies } from 'src/app/store/movie/movie.actions';
+import { selectAllMovies } from 'src/app/store/movie/movie.selectors';
 
 @Component({
   selector: 'app-movie-list',
   templateUrl: './movie-list.component.html',
   styleUrls: ['./movie-list.component.scss']
 })
-export class MovieListComponent {
+export class MovieListComponent  {
 
-  public movieList: IMovie[] = [];
-  public searchTerm: string = '';
+  public allMovies$ = this.store.select(selectAllMovies);
 
-  constructor(private _movieService: MovieService,
-    activatedRoute: ActivatedRoute) {
+  public movieList: Movie[] = [];
+
+  constructor(activatedRoute: ActivatedRoute,
+    private store: Store<AppState>) {
     activatedRoute.params.subscribe((params) => {
       if (params['searchTerm']) {
-        return this.getMovieListBySearchTerm(params['searchTerm']);
+        return this.store.dispatch(loadMovies({searchTerm: params['searchTerm']}));
       }
       if (params['tag']) {
         return this.filterMovie(params['tag']);
       }
-      return this.getMovieListBySearchTerm('');
+
+      return this.store.dispatch(loadMovies({searchTerm: ''}));
     });
   }
 
-  private getMovieListBySearchTerm(searchTerm: string): void {
-    this._movieService.getMovieListBySearchTerm(searchTerm)
-      .subscribe((response: IMovie[]) => {
-        this.movieList = response;
-      });
-  }
-
-  private getMovieListByGenres(genre: string): void {
-    this._movieService.getMovieListByGenres(genre)
-      .subscribe((response: IMovie[]) => {
-        this.movieList = response;
-      });
-  }
-
-  public searchMovie(term: string) {
-    this.searchTerm = term;
-    this.getMovieListBySearchTerm(this.searchTerm);
-  }
-
   public filterMovie(tag: string) {
-    if (tag) return this.getMovieListByGenres(tag);
-    return this.getMovieListBySearchTerm('');
+    if (tag) return this.store.dispatch(loadMovies({searchTerm: tag}));
+    return this.store.dispatch(loadMovies({searchTerm: ''}));
   }
 }
