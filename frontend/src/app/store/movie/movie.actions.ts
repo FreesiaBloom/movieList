@@ -7,11 +7,11 @@ export const loadMovies = createAction(
 );
 
 export const loadMoviesSuccess = createAction(
-  '[Movies API] Movies Load Success',
+  '[Movies API] Load Movie Success',
   props<{ movies: Movie[] }>()
 );
 
 export const loadMoviesFailure = createAction(
-  '[Movies API] Movies Load Failure',
+  '[Movies API] Load Movie Failure',
   props<{ error: string }>()
 );

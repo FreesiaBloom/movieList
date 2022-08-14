@@ -13,6 +13,11 @@ import { selectAllMovies } from 'src/app/store/movie/movie.selectors';
 })
 export class MovieListComponent  {
 
+  /*
+  * Przykład użycia store do ładowania Movie list
+  * zazwyczaj store trzeba uzywać jeśli modele aplikacji nie są ze sobą ściśle powiązanie i pozwala to komunikację między wieloma componentami.
+  * Ta aplikacja nie ma skomplikowanej logiki, dlatego użyłam store bardziej w formie prezentaji.
+  */
   public allMovies$ = this.store.select(selectAllMovies);
 
   constructor(activatedRoute: ActivatedRoute,

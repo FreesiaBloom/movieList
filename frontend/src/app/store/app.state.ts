@@ -1,5 +1,5 @@
-import { MovieState } from "./movie/movie.reducers";
+import { MoviesState } from "./movie/movie.reducers";
 
 export interface AppState {
-  movies: MovieState;
+  movies: MoviesState;
 }

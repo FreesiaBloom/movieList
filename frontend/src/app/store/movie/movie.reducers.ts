@@ -7,20 +7,20 @@ import {
   loadMoviesFailure
 } from './movie.actions';
 
-export interface MovieState {
+export interface MoviesState {
   movies: Movie[];
   error: string | null;
   status: StateStatus.pending | StateStatus.loading | StateStatus.error | StateStatus.success;
 }
 
-export const initialState: MovieState = {
+export const initialMoviesState: MoviesState = {
   movies: [],
   error: null,
   status: StateStatus.pending,
 };
 
 export const moviesReducer = createReducer(
-  initialState,
+  initialMoviesState,
   // Trigger loading the movies
   on(loadMovies, (state) => ({ ...state, status: StateStatus.loading })),
   // Handle successfully loaded movies
