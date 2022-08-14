@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { CurrentParamsService } from 'src/app/services/currentParamsService/current-params.service';
 
 @Component({
@@ -10,7 +10,6 @@ import { CurrentParamsService } from 'src/app/services/currentParamsService/curr
 export class SearchComponent {
 
   public searchTerm: string = '';
-  @Output() searchEvent = new EventEmitter<string>();
 
   public params: any;
 
@@ -30,11 +29,10 @@ export class SearchComponent {
 
   public clearSearchInput(): void {
     this.searchTerm = '';
-    this.search(this.searchTerm)
+    this.search()
   }
 
-  public search(value: any): void {
-    this.searchTerm = value;
+  public search(): void {
     this._assignSearchTerm();
 
     if (this.searchTerm) {

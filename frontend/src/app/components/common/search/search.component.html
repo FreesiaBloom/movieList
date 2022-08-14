@@ -1,11 +1,16 @@
 
 <mat-form-field class="search-form" appearance="fill">
   <input matInput type="text" name="searchTerm" placeholder="Search"
-  [ngModel]="searchTerm"
-  (ngModelChange)="search($event)">
+  (keydown.enter)="search()"
+  [(ngModel)]="searchTerm">
   <button [disabled]="!searchTerm" matSuffix mat-icon-button aria-label="Clear"
   (click)="clearSearchInput()">
     <mat-icon>close</mat-icon>
+  </button>
+  <button matSuffix mat-icon-button aria-label="Clear"
+    type="submit"
+    (click)="search()">
+    <mat-icon>search</mat-icon>
   </button>
 </mat-form-field>
 
