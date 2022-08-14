@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators'
-import { IMovie } from 'src/app/shared/interfaces/IMovie';
+import { Movie } from 'src/app/shared/interfaces/Movie.model';
 
 
 @Injectable({
@@ -12,39 +12,28 @@ export class MovieService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getMovieList(): Observable<IMovie[]> {
-    return this.httpClient.get<IMovie[]>("/assets/movies-data.json");
+  getMovieList(): Observable<Movie[]> {
+    return this.httpClient.get<Movie[]>("/assets/movies-data.json");
   }
 
-  getMovieListBySearchTerm(searchTerm: string): Observable<IMovie[]> {
-    return this.httpClient.get<IMovie[]>("/assets/movies-data.json")
+  getMovieListBySearchTerm(searchTerm: string): Observable<Movie[]> {
+    return this.httpClient.get<Movie[]>("/assets/movies-data.json")
       .pipe(
-        map((data: IMovie[]) => {
-          return data.filter((movie: IMovie) => {
-            return movie.name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase());
+        map((data: Movie[]) => {
+          return data.filter((movie: Movie) => {
+            return (movie.name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) || movie.genres?.find((item: string) => {
+              return item === searchTerm;
+            }));
           });
         })
       );
   }
 
-  getMovieListByGenres(genre: string): Observable<IMovie[]> {
-    return this.httpClient.get<IMovie[]>("/assets/movies-data.json")
+  getMovieById(movieId: number): Observable<Movie | undefined> {
+    return this.httpClient.get<Movie[]>("/assets/movies-data.json")
       .pipe(
-        map((data: IMovie[]) => {
-          return data.filter((movie: IMovie) => {
-            return movie.genres?.find((item: string) => {
-              return item === genre;
-            });
-          });
-        })
-      );
-  }
-
-  getMovieById(movieId: number): Observable<IMovie | undefined> {
-    return this.httpClient.get<IMovie[]>("/assets/movies-data.json")
-      .pipe(
-        map((data: IMovie[]) => {
-          return data.find((movie: IMovie) => {
+        map((data: Movie[]) => {
+          return data.find((movie: Movie) => {
             return movie.id === movieId;
           });
         })
