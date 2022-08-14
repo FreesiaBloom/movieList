@@ -15,6 +15,7 @@ import { MovieItemComponent } from './components/content/movie-item/movie-item.c
 import { SearchComponent } from './components/common/search/search.component';
 import { MovieDetailsComponent } from './components/content/movie-details/movie-details.component';
 import { TagListComponent } from './components/common/tag-list/tag-list.component';
+import { TagDirective } from './directives/tag.directive';
 
 // services
 
@@ -26,7 +27,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
-import { TagDirective } from './directives/tag.directive';
+
+// store
+import { moviesReducer } from './store/movie/movie.reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { MovieEffects } from './store/movie/movie.effects';
 
 @NgModule({
   declarations: [
@@ -45,7 +50,8 @@ import { TagDirective } from './directives/tag.directive';
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({ movies: moviesReducer }),
+    EffectsModule.forRoot([MovieEffects]),
     // Angular Material
     MatToolbarModule,
     MatInputModule,

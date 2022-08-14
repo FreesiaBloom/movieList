@@ -1,11 +1,14 @@
 import { createAction, props } from '@ngrx/store';
-import { IMovie } from 'src/app/shared/interfaces/IMovie';
+import { Movie } from 'src/app/shared/interfaces/Movie.model';
 
-export const loadMovies = createAction('[Movies Component] Load Movies');
+export const loadMovies = createAction(
+  '[Movies Component] Load Movies',
+  props<{ searchTerm: string }>()
+);
 
 export const loadMoviesSuccess = createAction(
   '[Movies API] Movies Load Success',
-  props<{ movies: IMovie[] }>()
+  props<{ movies: Movie[] }>()
 );
 
 export const loadMoviesFailure = createAction(
