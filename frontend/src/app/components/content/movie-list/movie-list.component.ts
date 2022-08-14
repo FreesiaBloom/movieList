@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { MovieService } from 'src/app/services/MovieService/movie-service';
-import { Movie } from 'src/app/shared/interfaces/Movie.model';
 import { AppState } from 'src/app/store/app.state';
 
 import { loadMovies } from 'src/app/store/movie/movie.actions';
@@ -21,12 +19,12 @@ export class MovieListComponent  {
     private store: Store<AppState>) {
     activatedRoute.params.subscribe((params) => {
       if (params['searchTerm']) {
-        return this.store.dispatch(loadMovies({searchTerm: params['searchTerm']}));
+        return store.dispatch(loadMovies({searchTerm: params['searchTerm']}));
       }
       if (params['tag']) {
         return this.filterMovie(params['tag']);
       }
-      return this.store.dispatch(loadMovies({searchTerm: ''}));
+      return store.dispatch(loadMovies({searchTerm: ''}));
     });
   }
 
