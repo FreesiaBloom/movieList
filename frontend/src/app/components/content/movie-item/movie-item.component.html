@@ -15,9 +15,8 @@
             </span>
           </div>
           <ul class="footer-genres">
-            <li *ngFor="let genre of movie.genres">
-              <span>{{ genre }}</span>
-              <span class="px-2">&#183;</span>
+            <li *ngFor="let genre of movie.genres" class="mt-2">
+              <span appTag>{{ genre }}</span>
             </li>
           </ul>
         </div>

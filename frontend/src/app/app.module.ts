@@ -26,6 +26,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
+import { TagDirective } from './directives/tag.directive';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { MatButtonModule } from '@angular/material/button';
     MovieItemComponent,
     SearchComponent,
     MovieDetailsComponent,
-    TagListComponent
+    TagListComponent,
+    TagDirective
   ],
   imports: [
     BrowserModule,

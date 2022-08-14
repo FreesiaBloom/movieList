@@ -16,20 +16,19 @@
           <span>{{movie.description}}</span>
         </div>
 
-        <div class="ratings">
+        <div class="ratings mt-3">
           <span>{{movie.rate}} / 10</span>
         </div>
 
-        <div class="length">
+        <div class="length mt-3">
           <span>{{movie.length}}</span>
         </div>
 
-        <div class="genres">
-          <span *ngFor="let genre of movie.genres">
-            {{genre}}
-            <span class="px-2">&#183;</span>
-          </span>
-        </div>
+        <ul class="genres mt-3">
+          <li *ngFor="let genre of movie.genres">
+            <span appTag>{{genre}}</span>
+          </li>
+        </ul>
       </div>
   </div>
   </div>
