@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MovieService } from 'src/app/services/MovieService/movie-service';
-import { GenreType } from 'src/app/shared/enums/GenreType';
 import { IMovie } from 'src/app/shared/interfaces/IMovie';
 
 @Component({
@@ -9,7 +8,7 @@ import { IMovie } from 'src/app/shared/interfaces/IMovie';
   templateUrl: './movie-list.component.html',
   styleUrls: ['./movie-list.component.scss']
 })
-export class MovieListComponent implements OnInit {
+export class MovieListComponent {
 
   public movieList: IMovie[] = [];
   public searchTerm: string = '';
@@ -25,9 +24,6 @@ export class MovieListComponent implements OnInit {
       }
       return this.getMovieListBySearchTerm('');
     });
-  }
-
-  ngOnInit(): void {
   }
 
   private getMovieListBySearchTerm(searchTerm: string): void {

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { GenreType } from 'src/app/shared/enums/GenreType';
 
@@ -7,17 +7,13 @@ import { GenreType } from 'src/app/shared/enums/GenreType';
   templateUrl: './tag-list.component.html',
   styleUrls: ['./tag-list.component.scss']
 })
-export class TagListComponent implements OnInit {
+export class TagListComponent {
 
   @Output() tagFilterEvent = new EventEmitter<string>();
 
   public tagList = Object.keys(GenreType);
 
-  constructor(private _router: Router) {
-   }
-
-  ngOnInit(): void {
-  }
+  constructor(private _router: Router) { }
 
   public filter(tag: string): void {
     if (tag) {
@@ -26,7 +22,4 @@ export class TagListComponent implements OnInit {
       this._router.navigateByUrl('/');
     }
   }
-
-
-
 }

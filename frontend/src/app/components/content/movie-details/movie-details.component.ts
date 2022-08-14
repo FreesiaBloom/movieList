@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MovieService } from 'src/app/services/MovieService/movie-service';
 import { IMovie } from 'src/app/shared/interfaces/IMovie';
@@ -8,7 +8,7 @@ import { IMovie } from 'src/app/shared/interfaces/IMovie';
   templateUrl: './movie-details.component.html',
   styleUrls: ['./movie-details.component.scss']
 })
-export class MovieDetailsComponent implements OnInit {
+export class MovieDetailsComponent {
 
   public movie: IMovie | undefined;
 
@@ -19,9 +19,6 @@ export class MovieDetailsComponent implements OnInit {
         this.getMovie(Number(params['movieId']));
       }
     });
-  }
-
-  ngOnInit(): void {
   }
 
   private getMovie(movieId: number): void {
