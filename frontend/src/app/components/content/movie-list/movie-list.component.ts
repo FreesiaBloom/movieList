@@ -17,8 +17,6 @@ export class MovieListComponent  {
 
   public allMovies$ = this.store.select(selectAllMovies);
 
-  public movieList: Movie[] = [];
-
   constructor(activatedRoute: ActivatedRoute,
     private store: Store<AppState>) {
     activatedRoute.params.subscribe((params) => {
@@ -28,7 +26,6 @@ export class MovieListComponent  {
       if (params['tag']) {
         return this.filterMovie(params['tag']);
       }
-
       return this.store.dispatch(loadMovies({searchTerm: ''}));
     });
   }

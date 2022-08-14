@@ -1,4 +1,4 @@
-<div class="container mt-3" *ngIf="movieList">
+<div class="container mt-3" *ngIf="allMovies$">
   <app-tag-list></app-tag-list>
   <ul class="list row">
     <li *ngFor="let movie of allMovies$ | async" class="list-item col-lg-3">
