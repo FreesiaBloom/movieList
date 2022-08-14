@@ -17,7 +17,6 @@ import { MovieDetailsComponent } from './components/content/movie-details/movie-
 import { TagListComponent } from './components/common/tag-list/tag-list.component';
 
 // services
-
 import { CurrentParamsService } from './services/currentParamsService/current-params.service';
 
 // Angular Material
@@ -27,6 +26,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
 import { TagDirective } from './directives/tag.directive';
+
+// store
+import { searchTermReducer } from './store/searchTerm/searchTerm.reducer';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,7 @@ import { TagDirective } from './directives/tag.directive';
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({ term: searchTermReducer }),
     // Angular Material
     MatToolbarModule,
     MatInputModule,
