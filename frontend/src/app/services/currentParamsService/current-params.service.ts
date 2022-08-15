@@ -10,8 +10,6 @@ export class CurrentParamsService {
   constructor(private router: Router) {
   }
 
-  value='test';
-
   public getCurrentParams(): Observable<any> {
     return this.router.events
       .pipe(
