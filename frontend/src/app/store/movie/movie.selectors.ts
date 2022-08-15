@@ -8,11 +8,3 @@ export const selectAllMovies = createSelector(
   selectMovies,
   (state: MoviesState) => state.movies
 );
-
-export const selectMovieById = (id: number) =>
-  createSelector(selectAllMovies, (movies) => {
-    return movies.find((movie: Movie) => {
-      console.log(movie.id, id);
-      return movie.id === id
-    });
-  });

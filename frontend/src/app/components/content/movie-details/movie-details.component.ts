@@ -11,6 +11,7 @@ import { Movie } from 'src/app/shared/interfaces/Movie.model';
 export class MovieDetailsComponent {
 
   public movie: Movie | undefined;
+  public allMovies$: any;
 
   constructor(private _movieService: MovieService, activatedRoute: ActivatedRoute) {
     activatedRoute.params.subscribe((params) => {
