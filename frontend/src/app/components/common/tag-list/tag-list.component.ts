@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GenreType } from 'src/app/shared/enums/GenreType';
 
@@ -7,13 +7,15 @@ import { GenreType } from 'src/app/shared/enums/GenreType';
   templateUrl: './tag-list.component.html',
   styleUrls: ['./tag-list.component.scss']
 })
-export class TagListComponent {
+export class TagListComponent implements OnInit{
 
   @Output() tagFilterEvent = new EventEmitter<string>();
 
   public tagList = Object.keys(GenreType);
 
   public activeTag: string = '';
+
+  public isMobileView: boolean = false;
 
   constructor(private _router: Router,
     activatedRoute: ActivatedRoute) {
@@ -22,6 +24,12 @@ export class TagListComponent {
         this.activeTag = params['tag'];
       }
     });
+  }
+
+  ngOnInit() {
+    if (window.screen.width <= 992) { // 768px portrait
+      this.isMobileView = true;
+    }
   }
 
   public filter(tag: string): void {

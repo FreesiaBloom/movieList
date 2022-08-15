@@ -1,10 +1,18 @@
-<ul class="tag-list">
-  <li>
+<ul class="tag-list" *ngIf="!isMobileView">
+  <li class="tag-list-item">
     <button *ngIf="activeTag" mat-stroked-button color="primary" (click)="filter('')">All</button>
     <button *ngIf="!activeTag" mat-flat-button color="primary" (click)="filter('')">All</button>
   </li>
-  <li *ngFor="let tag of tagList" class="tag-list">
+  <li *ngFor="let tag of tagList" class="tag-list-item">
     <button *ngIf="tag !== activeTag" mat-stroked-button color="primary" (click)="filter(tag)">{{tag}}</button>
     <button *ngIf="tag === activeTag" mat-flat-button color="primary" (click)="filter(tag)">{{tag}}</button>
   </li>
 </ul>
+<div *ngIf="isMobileView">
+  <button mat-button [matMenuTriggerFor]="menu" class="genre-filter">Genre filter</button>
+  <mat-menu #menu="matMenu">
+    <button  mat-menu-item color="primary" (click)="filter('')">All</button>
+    <button mat-menu-item color="primary" *ngFor="let tag of tagList" (click)="filter(tag)">{{tag}}</button>
+  </mat-menu>
+  <span *ngIf="activeTag" appTag>{{activeTag}}</span>
+</div>

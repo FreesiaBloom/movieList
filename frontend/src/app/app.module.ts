@@ -27,6 +27,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
 
 // store
 import { moviesReducer } from './store/movie/movie.reducers';
@@ -57,7 +58,8 @@ import { MovieEffects } from './store/movie/movie.effects';
     MatInputModule,
     MatIconModule,
     MatGridListModule,
-    MatButtonModule
+    MatButtonModule,
+    MatMenuModule
   ],
   providers: [CurrentParamsService],
   bootstrap: [AppComponent]
