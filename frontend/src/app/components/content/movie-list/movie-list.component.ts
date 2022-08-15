@@ -1,52 +1,40 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MovieService } from 'src/app/services/MovieService/movie-service';
-import { IMovie } from 'src/app/shared/interfaces/IMovie';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/store/app.state';
+
+import { loadMovies } from 'src/app/store/movie/movie.actions';
+import { selectAllMovies } from 'src/app/store/movie/movie.selectors';
 
 @Component({
   selector: 'app-movie-list',
   templateUrl: './movie-list.component.html',
   styleUrls: ['./movie-list.component.scss']
 })
-export class MovieListComponent {
+export class MovieListComponent  {
 
-  public movieList: IMovie[] = [];
-  public searchTerm: string = '';
+  /*
+  * Przykład użycia store do ładowania Movie list
+  * zazwyczaj store trzeba uzywać jeśli modele aplikacji nie są ze sobą ściśle powiązanie i pozwala to komunikację między wieloma componentami.
+  * Ta aplikacja nie ma skomplikowanej logiki, dlatego użyłam store bardziej w formie prezentaji.
+  */
+  public allMovies$ = this.store.select(selectAllMovies);
 
-  constructor(private _movieService: MovieService,
-    activatedRoute: ActivatedRoute) {
+  constructor(activatedRoute: ActivatedRoute,
+    private store: Store<AppState>) {
     activatedRoute.params.subscribe((params) => {
       if (params['searchTerm']) {
-        return this.getMovieListBySearchTerm(params['searchTerm']);
+        return store.dispatch(loadMovies({searchTerm: params['searchTerm']}));
       }
       if (params['tag']) {
         return this.filterMovie(params['tag']);
       }
-      return this.getMovieListBySearchTerm('');
+      return store.dispatch(loadMovies({searchTerm: ''}));
     });
   }
 
-  private getMovieListBySearchTerm(searchTerm: string): void {
-    this._movieService.getMovieListBySearchTerm(searchTerm)
-      .subscribe((response: IMovie[]) => {
-        this.movieList = response;
-      });
-  }
-
-  private getMovieListByGenres(genre: string): void {
-    this._movieService.getMovieListByGenres(genre)
-      .subscribe((response: IMovie[]) => {
-        this.movieList = response;
-      });
-  }
-
-  public searchMovie(term: string) {
-    this.searchTerm = term;
-    this.getMovieListBySearchTerm(this.searchTerm);
-  }
-
   public filterMovie(tag: string) {
-    if (tag) return this.getMovieListByGenres(tag);
-    return this.getMovieListBySearchTerm('');
+    if (tag) return this.store.dispatch(loadMovies({searchTerm: tag}));
+    return this.store.dispatch(loadMovies({searchTerm: ''}));
   }
 }

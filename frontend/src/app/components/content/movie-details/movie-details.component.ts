@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MovieService } from 'src/app/services/MovieService/movie-service';
-import { IMovie } from 'src/app/shared/interfaces/IMovie';
+import { Movie } from 'src/app/shared/interfaces/Movie.model';
 
 @Component({
   selector: 'app-movie-details',
@@ -10,7 +10,8 @@ import { IMovie } from 'src/app/shared/interfaces/IMovie';
 })
 export class MovieDetailsComponent {
 
-  public movie: IMovie | undefined;
+  public movie: Movie | undefined;
+  public allMovies$: any;
 
   constructor(private _movieService: MovieService, activatedRoute: ActivatedRoute) {
     activatedRoute.params.subscribe((params) => {
