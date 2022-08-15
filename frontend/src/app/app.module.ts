@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterTestingModule } from "@angular/router/testing";
 
 // components
 import { MovieListComponent } from './components/content/movie-list/movie-list.component';
@@ -18,7 +19,6 @@ import { TagListComponent } from './components/common/tag-list/tag-list.componen
 import { TagDirective } from './directives/tag.directive';
 
 // services
-
 import { CurrentParamsService } from './services/currentParamsService/current-params.service';
 
 // Angular Material
@@ -53,6 +53,7 @@ import { MovieEffects } from './store/movie/movie.effects';
     FormsModule,
     StoreModule.forRoot({ movies: moviesReducer }),
     EffectsModule.forRoot([MovieEffects]),
+    RouterTestingModule,
     // Angular Material
     MatToolbarModule,
     MatInputModule,
@@ -62,6 +63,7 @@ import { MovieEffects } from './store/movie/movie.effects';
     MatMenuModule
   ],
   providers: [CurrentParamsService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }
